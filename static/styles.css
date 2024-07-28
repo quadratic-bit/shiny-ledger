@@ -1,0 +1,14 @@
+/*
+:root {
+    color-scheme: light dark;
+}
+*/
+
+#charts {
+    display: flex;
+    flex-direction: row;
+}
+
+.c3-chart-arcs text {
+    font-weight: bold;
+}
