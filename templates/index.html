@@ -8,7 +8,8 @@
         <link href="{{ url_for('static', path='/c3/c3.css') }}" rel="stylesheet">
     </head>
     <body>
-        <h1>Expenses</h1>
+        <select id="top-category"></select>
+        <br>
         <input id="whatever-1" name="whatever-1" type="date" value="{{ begin_default }}">
         <input id="whatever-2" name="whatever-2" type="date" value="{{ end_default }}">
         <div id="charts">

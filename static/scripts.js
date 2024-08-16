@@ -13,8 +13,10 @@ const formatPercent = formatLocale.format(".1%")
 const date_begin = document.getElementById("whatever-1")
 const date_end = document.getElementById("whatever-2")
 
-date_begin.onchange = bruh
-date_end.onchange = bruh
+const categories_sel = document.getElementById("top-category")
+
+date_begin.onchange = update
+date_end.onchange = update
 
 let box = document.getElementById("charts")
 
@@ -31,14 +33,14 @@ let chart2 = c3.generate({
     pie: {
         label: {
             format: function (value, _ratio, _id) {
-                return formatNumber(value);
+                return formatNumber(value)
             }
         }
     },
     tooltip: {
         format: {
             value: function (value, ratio, _id, _index) {
-                return formatNumber(value) + " (" + formatPercent(ratio) + ")";
+                return formatNumber(value) + " (" + formatPercent(ratio) + ")"
             }
         }
     }
@@ -64,21 +66,38 @@ let chart = c3.generate({
     pie: {
         label: {
             format: function (value, _ratio, _id) {
-                return formatNumber(value);
+                return formatNumber(value)
             }
         }
     },
     tooltip: {
         format: {
             value: function (value, ratio, _id, _index) {
-                return formatNumber(value) + " (" + formatPercent(ratio) + ")";
+                return formatNumber(value) + " (" + formatPercent(ratio) + ")"
             }
         }
     }
 })
 
-function bruh() {
-    fetch(HOST + "/expenses?begin=" + date_begin.value + "&end=" + date_end.value)
+function setup() {
+    fetch(HOST + "/categories")
+        .then(async r => {
+            let data = await r.json()
+            for (const category of data) {
+                const opt = document.createElement("option")
+                opt.textContent = opt.value = category
+                categories_sel.appendChild(opt)
+            }
+            update()
+        })
+        .catch(e => {
+            console.error(e)
+        })
+}
+
+function update() {
+    const category = categories_sel.value
+    fetch(HOST + "/stat?category=" + category + "&begin=" + date_begin.value + "&end=" + date_end.value)
         .then(async r => {
             let data = await r.json()
             chart2_data = data
@@ -96,4 +115,8 @@ function bruh() {
         })
 }
 
-bruh()
+categories_sel.addEventListener("change", () => {
+    update()
+})
+
+setup()

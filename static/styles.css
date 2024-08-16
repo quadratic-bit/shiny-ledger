@@ -4,6 +4,11 @@
 }
 */
 
+select {
+    font-size: x-large;
+    margin-bottom: 1em;
+}
+
 #charts {
     display: flex;
     flex-direction: row;
