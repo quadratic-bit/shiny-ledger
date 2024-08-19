@@ -10,8 +10,8 @@ const formatLocale = d3.formatLocale({
 const formatNumber = formatLocale.format("$,.2f")
 const formatPercent = formatLocale.format(".1%")
 
-const date_begin = document.getElementById("whatever-1")
-const date_end = document.getElementById("whatever-2")
+const date_begin = document.getElementById("date-begin")
+const date_end = document.getElementById("date-end")
 
 const categories_sel = document.getElementById("top-category")
 
