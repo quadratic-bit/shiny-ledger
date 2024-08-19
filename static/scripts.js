@@ -28,7 +28,7 @@ let chart2 = c3.generate({
         type: "pie",
     },
     size: {
-        width: box.clientWidth / 2.0
+        width: box.clientWidth * 0.5 * 0.8
     },
     pie: {
         label: {

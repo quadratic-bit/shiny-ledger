@@ -10,11 +10,17 @@
     <body>
         <select id="top-category"></select>
         <br>
-        <input id="whatever-1" name="whatever-1" type="date" value="{{ begin_default }}">
-        <input id="whatever-2" name="whatever-2" type="date" value="{{ end_default }}">
+        <label>
+            Start:
+            <input id="whatever-1" name="whatever-1" type="date" value="{{ begin_default }}">
+        </label>
+        <label>
+            End:
+            <input id="whatever-2" name="whatever-2" type="date" value="{{ end_default }}">
+        </label>
         <div id="charts">
-          <div id="chart"></div>
-          <div id="secondary-chart"></div>
+            <div id="chart"></div>
+            <div id="secondary-chart"></div>
         </div>
 
         <script src="{{ url_for('static', path='/c3/docs/js/d3-5.8.2.min.js') }}"></script>
